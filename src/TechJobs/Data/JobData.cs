@@ -41,6 +41,10 @@ namespace TechJobs.Data
          */
         public List<Job> FindByValue(string value)
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                return Jobs;
+            }
             var results = from j in Jobs
                           where j.Employer.Contains(value)
                           || j.Location.Contains(value)
